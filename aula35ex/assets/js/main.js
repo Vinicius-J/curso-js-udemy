@@ -1,23 +1,33 @@
 //* const com um array de quatro objetos, e cada objeto com uma tag e uma frase
 const elementos = [
-    {tag: 'p', texto: 'Frase 1'},
-    {tag: 'div', texto: 'Frase 2'},
-    {tag: 'footer', texto: 'Frase 3'},
-    {tag: 'section', texto: 'Frase 4'},
+    {tag: 'p', texto: 'Tag p'},
+    {tag: 'div', texto: 'Tag div'},
+    {tag: 'section', texto: 'Tag section'},
+    {tag: 'footer', texto: 'Tag footer'},
 ];
 
-//* const que seleciona o container(onde vai ir as tags com as frases) no HTML
-const cont = document.querySelector('.container');
+const cont = document.querySelector('.container'); //* selecionando o container
 
-//* elemento de repetição com base no número de objetos que tem no array de elementos
-for(let i = 0; i < elementos.length; i++){
+const div = document.createElement('div'); //* criando uma div
 
-//* consts que irão pegar as tags e textos e separar em objetos
-    let {tag} = elementos[i];
-    let {texto} = elementos[i];
+for(let i = 0; i < elementos.length; i++){ //* for para criar o loop de criação das tags e textos
 
-//* const que irar criar as tags e adicionar as frases com base no valor de i na sequência que aparece no array de elementos
-    const criarTags = document.createElement(tag);
-    cont.appendChild(criarTags).innerHTML = texto;
-    console.log(i,tag,texto); //! console.log() normal para mostrar no console do navegador os valores
+    let {tag, texto} = elementos[i]; //* desestruturação dos objetos tag e texto com base no elementos[i]
+
+    const criarTags = document.createElement(tag); //* criando as tags
+    criarTags.innerText = texto; //* adicionando os textos respectivos nas tags
+    div.appendChild(criarTags); //* colocando as tags com os textos na div
+    cont.appendChild(div); //* colocando a div com as tags e os textos no container
 }
+
+//! Outra forma seria criar os textos separados
+
+//* criando as tags: 
+//? const criarTags = document.createElement(tag);
+//* criando o texto separado: 
+//? const criarTexto = document.creatTextNode(texto);
+
+//* adicioando o texto nas tags: 
+//? criarTags.appendChild(criarTexto);
+//* adicionando as tags com os textos na div: 
+//? div.appendChild(criarTags);

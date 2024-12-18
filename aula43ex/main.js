@@ -1,4 +1,4 @@
-//* Escreva uma função quer recebe o número e retorne o seguinte:
+//* Escreva uma função que recebe o número e retorne o seguinte:
 //* 1 -> Número é divisível por 3 = Fizz
 //* 2 -> Número é divisível por 5 = Buzz
 //* 3 -> Número é divisível por 3 e 5 = FizzBuzz

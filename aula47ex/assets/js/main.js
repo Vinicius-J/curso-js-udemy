@@ -17,10 +17,10 @@ const zerar = document.querySelector('#zerar');
 
 
 function criarSegundos(segundos){
-    const data = new Date(segundos * 1000);
+    const data = new Date(segundos * 1000); //? multiplicado por 1000 por causa que recebe em milesegundos 1s = 1000ms
     return data.toLocaleTimeString('pt-BR', {
         hour12:false,
-        timeZone: 'UTC',
+        timeZone: 'UTC', //? ou 'GMT'
     })
 }
 
@@ -35,6 +35,7 @@ function iniciaRelogio(){
 };
 
 iniciar.addEventListener('click', function (event) {
+    clearInterval(timer);
     relogio.classList.remove('pausado');
     iniciaRelogio();
 });

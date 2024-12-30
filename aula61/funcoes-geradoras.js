@@ -57,13 +57,15 @@ for (let valor of g4) {
   console.log(valor);
 }
 
+console.log(g4);
+
 function* geradora5() {
   yield function () {
     console.log('vim do y1');
   };
 
   yield function(){
-    console.log('vim do return');
+    console.log('vim do return');//return troca por um yield
   };
 
   yield function(){
@@ -71,11 +73,11 @@ function* geradora5() {
   };
 }
 
-const g5 = geradora5();
-const func1 = g5.next().value;
-const func2 = g5.next().value;
-const func3 = g5.next().value;
+// const g5 = geradora5();
+// const func1 = g5.next().value;
+// const func2 = g5.next().value;
+// const func3 = g5.next().value;
 
-func1();
-func2();
-func3();
+// func1();
+// func2();
+// func3();

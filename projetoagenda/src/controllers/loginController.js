@@ -1,7 +1,8 @@
 const Login = require('../models/LoginModel ');
 
 exports.index = (req, res) => {
-  res.render('login');
+  if (req.session.user) return res.render('login-logado');
+  return res.render('login');
 };
 
 exports.register = async (req, res) => {
@@ -11,9 +12,7 @@ exports.register = async (req, res) => {
 
     if (login.errors.length > 0) {
       req.flash('errors', login.errors);
-      req.session.save(function () {
-        return res.redirect(req.get('Referer') || 'index');
-      });
+      req.session.save(() => res.redirect(req.get('Referer') || 'index'));
       return;
     }
     req.flash('success', 'Seu usuário foi criado com sucesso.');
@@ -22,4 +21,29 @@ exports.register = async (req, res) => {
     console.log(e);
     return res.render('404');
   }
+};
+
+exports.login = async (req, res) => {
+  try {
+    const login = new Login(req.body);
+    await login.login();
+
+    if (login.errors.length > 0) {
+      req.flash('errors', login.errors);
+      req.session.save(() => res.redirect(req.get('Referer') || 'index'));
+      return;
+    }
+
+    req.flash('success', 'Você entrou no sistema.');
+    req.session.user = login.user;
+    req.session.save(() => res.redirect(req.get('Referer') || 'index'));
+  } catch (e) {
+    console.log(e);
+    return res.render('404');
+  }
+};
+
+exports.logout = (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
 };

@@ -1,4 +1,4 @@
-<% if (errors.length > 0) { %>
+<% if (errors.length > 0 && errors) { %>
   <div class="alert alert-danger">
     <% errors.forEach(error => { %>
       <%= error %><br>
@@ -6,7 +6,7 @@
   </div>
 <% } %>
 
-<% if (success.length > 0) { %>
+<% if (success.length > 0 && success) { %>
   <div class="alert alert-success">
     <%= success[0] %>
   </div>

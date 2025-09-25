@@ -1,9 +1,15 @@
+// Responsável por criar o servidor e as rotas
 const express = require('express');
+
+// Inicializando as rotas da aplicação
 const route = express.Router();
+
+// Responsáveis por controlar as requisições da aplicação
 const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
 const contatoController = require('./src/controllers/contatoController');
 
+// Middleware que verifica se está logado ou não
 const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas da home
@@ -21,9 +27,5 @@ route.post('/contato/register', loginRequired, contatoController.register);
 route.get('/contato/index/:id', loginRequired, contatoController.editIndex);
 route.post('/contato/edit/:id', loginRequired, contatoController.edit);
 route.get('/contato/delete/:id', loginRequired, contatoController.delete);
-
-
-
-
 
 module.exports = route;

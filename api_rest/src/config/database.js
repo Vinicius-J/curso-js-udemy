@@ -1,20 +1,30 @@
-require("dotenv").config;
+require("dotenv").config();
+
+// import { Sequelize } from "sequelize";
+
+// const sequelize = new Sequelize(
+//   process.env.DATABASE,
+//   process.env.DATABASE_USERNAME,
+//   process.env.DATABASE_PASSWORD,
+//   {
+//     host: process.env.DATABASE_HOST,
+//     dialect: "mysql",
+//     logging: console.log,
+//     define: {
+//       timestamps: true,
+//       underscored: true,
+//     },
+//   }
+// );
+
+// export default sequelize;
+
 module.exports = {
-  dialect: "mariadb",
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-  define: {
-    timestamps: true,
-    underscored: true,
-    underscoredAll: true,
-    createdAt: "created_at",
-    updatedAt: "updated_at",
+  development: {
+    database: process.env.DATABASE,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
+    dialect: "mysql",
   },
-  dialectOptions: {
-    timeZone: "America/Sao_Paulo",
-  },
-  timeZone: "America/Sao_Paulo",
 };

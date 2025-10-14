@@ -17,8 +17,9 @@ class UserController {
   async index(req, res) {
     try {
       const users = await User.findAll();
+      console.log('USER ID', req.userId);
+      console.log('USER EMAIL', req.userEmail);
       return res.json(users);
-      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return res.json(null);
     }
@@ -29,7 +30,6 @@ class UserController {
     try {
       const user = await User.findByPk(req.params.id);
       return res.json(user);
-      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return res.json(null);
     }

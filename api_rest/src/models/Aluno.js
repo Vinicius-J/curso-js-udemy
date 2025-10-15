@@ -75,8 +75,7 @@ export default class Aluno extends Model {
   }
 
   // referencia que Aluno tem foto
-  // static associate(models) {
-  //   this.hasOne(models.Foto, { foreignKey: "aluno_id" });
-  //   // ou hasMany
-  // }
+  static associate(models) {
+    this.hasMany(models.Foto, { foreignKey: "aluno_id" });
+  }
 }
